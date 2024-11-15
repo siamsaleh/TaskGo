@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#1D2026</color>
+    <color name="colorSecondary">#2D303A</color>
+
+    <color name="screen_background">#1D2026</color>
+    <color name="status_bar">#1D2026</color>
+    <color name="rounded_bg">#2D303A</color>
+    <color name="text_color">#E6FFFFFF</color>
+    <color name="text_hint_color">#66686F</color>
 </resources>

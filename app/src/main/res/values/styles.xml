@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CurrentLocationTextStyle">
+        <item name="android:fontFamily">@font/rubik_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:alpha">.5</item>
+        <item name="android:textColor">@color/text_color</item>
+    </style>
+
+    <style name="TitleTextStyle">
+        <item name="android:fontFamily">@font/rubik_medium</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/text_color</item>
+    </style>
+
+    <style name="CategoryTextStyle">
+        <item name="android:fontFamily">@font/gilroy_medium</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+</resources>

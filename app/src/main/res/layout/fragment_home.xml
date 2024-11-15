@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.fragment.HomeFragment">
+
+    <!--Top AppBar-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_large">
+
+        <ImageView
+            android:id="@+id/categoryIcon"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:contentDescription="@string/category_icon"
+            android:src="@drawable/ic_category"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/locationContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/profileIcon"
+            app:layout_constraintStart_toEndOf="@id/categoryIcon"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/locationIcon"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:contentDescription="@string/location_text"
+                android:src="@drawable/ic_location" />
+
+            <TextView
+                style="@style/CurrentLocationTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:text="@string/new_york_ny_text" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <ImageView
+            android:id="@+id/profileIcon"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:background="@drawable/icon_bg"
+            android:contentDescription="@string/profile_img"
+            android:padding="5dp"
+            android:src="@drawable/img_avatar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <EditText
+        android:id="@+id/searchET"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/edittext_height"
+        android:layout_marginStart="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_extra_large"
+        android:layout_marginEnd="@dimen/margin_large"
+        android:autofillHints="search"
+        android:background="@drawable/search_bg"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="10dp"
+        android:hint="@string/search_text"
+        android:inputType="text"
+        android:paddingStart="@dimen/margin_small"
+        android:paddingEnd="@dimen/margin_small"
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/text_hint_color"
+        android:textSize="14sp" />
+
+    <TextView
+        style="@style/TitleTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_extra_large"
+        android:text="@string/popular_categories_text" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/category_height"
+        android:layout_marginStart="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_large"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/search_bg">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/flightsIcon"
+                    android:layout_width="@dimen/cat_icon_size"
+                    android:layout_height="@dimen/cat_icon_size"
+                    android:contentDescription="@string/flights_text"
+                    android:src="@drawable/ic_flights" />
+
+                <TextView
+                    style="@style/CategoryTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:text="@string/flights_text" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/category_gap"
+            android:layout_weight="1"
+            android:background="@drawable/search_bg">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/hotelsIcon"
+                    android:layout_width="@dimen/cat_icon_size"
+                    android:layout_height="@dimen/cat_icon_size"
+                    android:layout_centerHorizontal="true"
+                    android:contentDescription="@string/hotels_text"
+                    android:src="@drawable/ic_hotels" />
+
+                <TextView
+                    style="@style/CategoryTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:text="@string/hotels_text" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/category_gap"
+            android:layout_weight="1"
+            android:background="@drawable/search_bg">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/visaIcon"
+                    android:layout_width="@dimen/cat_icon_size"
+                    android:layout_height="@dimen/cat_icon_size"
+                    android:contentDescription="@string/visa_text"
+                    android:src="@drawable/ic_visa" />
+
+                <TextView
+                    style="@style/CategoryTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:text="@string/visa_text" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/category_gap"
+            android:layout_weight="1"
+            android:background="@drawable/search_bg">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/busesIcon"
+                    android:layout_width="@dimen/cat_icon_size"
+                    android:layout_height="@dimen/cat_icon_size"
+                    android:contentDescription="@string/buses_text"
+                    android:src="@drawable/ic_buses" />
+
+                <TextView
+                    style="@style/CategoryTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:text="@string/buses_text" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_extra_large"
+        android:layout_marginEnd="@dimen/margin_small">
+
+        <TextView
+            style="@style/TitleTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recommended_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_18sdp"
+            android:contentDescription="@string/see_all_text"
+            android:src="@drawable/ic_see_all"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
