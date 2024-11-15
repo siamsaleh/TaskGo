@@ -3,6 +3,7 @@
     <dimen name="margin_extra_large">40dp</dimen>
     <dimen name="margin_large">30dp</dimen>
     <dimen name="margin_small">20dp</dimen>
+    <dimen name="margin_extra_small">10dp</dimen>
 
     <dimen name="edittext_height">54dp</dimen>
     <dimen name="category_height">80dp</dimen>
@@ -11,5 +12,6 @@
     <dimen name="bottom_nav_size">70dp</dimen>
     <dimen name="icon_size">24dp</dimen>
     <dimen name="cat_icon_size">30dp</dimen>
+    <dimen name="bookmark_size">42dp</dimen>
 
 </resources>

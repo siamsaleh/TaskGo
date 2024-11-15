@@ -10,5 +10,7 @@
     <color name="status_bar">#1D2026</color>
     <color name="rounded_bg">#2D303A</color>
     <color name="text_color">#E6FFFFFF</color>
+    <color name="text_color_100">#FFFFFF</color>
     <color name="text_hint_color">#66686F</color>
+    <color name="recommended_bookmark_color">#FF8F8F</color>
 </resources>

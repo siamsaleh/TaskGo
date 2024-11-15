@@ -38,7 +38,7 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun setupObserver() {
-        viewModel.recommendedList.observe(this) {
+        viewModel.recommendedList.observe(viewLifecycleOwner) {
             handleRecommendedList(it)
         }
     }
