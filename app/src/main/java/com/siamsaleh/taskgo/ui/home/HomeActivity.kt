@@ -1,11 +1,12 @@
-package com.siamsaleh.taskgo.ui.activity
+package com.siamsaleh.taskgo.ui.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.siamsaleh.taskgo.R
 import com.siamsaleh.taskgo.databinding.ActivityHomeBinding
-import com.siamsaleh.taskgo.ui.fragment.HomeFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding

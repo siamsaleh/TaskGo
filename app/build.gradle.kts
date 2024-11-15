@@ -53,6 +53,7 @@ dependencies {
 
     // ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation (libs.androidx.fragment.ktx)
 
     // SDP and SSP Library - A scalable size unit and texts
     implementation(libs.sdp.android)
