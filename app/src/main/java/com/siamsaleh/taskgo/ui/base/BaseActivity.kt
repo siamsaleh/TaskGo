@@ -1,15 +1,15 @@
-package com.siamsaleh.taskgo.ui
+package com.siamsaleh.taskgo.ui.base
 
 import android.content.Intent
 import android.os.Build
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.StringRes
-import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 import java.io.Serializable
 
-open class BaseFragment : Fragment() {
+open class BaseActivity : AppCompatActivity() {
 
     fun showError(view: View, @StringRes errorMessageResId: Int) {
         if (view is TextInputEditText) {
@@ -19,7 +19,7 @@ open class BaseFragment : Fragment() {
     }
 
     fun showToast(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
     }
 
     inline fun <reified T : Serializable> Intent.serializable(key: String): T? = when {

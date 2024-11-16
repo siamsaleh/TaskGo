@@ -9,8 +9,8 @@ import com.siamsaleh.taskgo.R
 fun ImageView.loadImage(context: Context, url: String?) {
     Glide.with(context)
         .load(url)
-        .placeholder(R.drawable.search_bg)
-        .error(R.drawable.btn_gradient_bg)
+        .placeholder(R.drawable.loading_effect)
+        .error(R.drawable.gradient_bg)
         .transition(DrawableTransitionOptions.withCrossFade()) // Fade transition
         .into(this)
 }

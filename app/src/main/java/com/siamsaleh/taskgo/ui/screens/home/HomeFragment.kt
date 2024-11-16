@@ -1,5 +1,6 @@
-package com.siamsaleh.taskgo.ui.home
+package com.siamsaleh.taskgo.ui.screens.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +10,9 @@ import androidx.lifecycle.lifecycleScope
 import com.siamsaleh.taskgo.R
 import com.siamsaleh.taskgo.data.model.RecommendedItem
 import com.siamsaleh.taskgo.databinding.FragmentHomeBinding
-import com.siamsaleh.taskgo.ui.BaseFragment
-import com.siamsaleh.taskgo.ui.home.adapter.RecommendedAdapter
+import com.siamsaleh.taskgo.ui.base.BaseFragment
+import com.siamsaleh.taskgo.ui.screens.details.DetailsActivity
+import com.siamsaleh.taskgo.ui.adapters.RecommendedAdapter
 import com.siamsaleh.taskgo.util.UiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -93,6 +95,8 @@ class HomeFragment : BaseFragment(), RecommendedAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(recommendedItem: RecommendedItem) {
-        recommendedItem.location?.let { showToast(it) }
+        startActivity(Intent(requireActivity(), DetailsActivity::class.java).apply {
+            putExtra(RecommendedItem.RECOMMENDED_ITEM_KEY, recommendedItem)
+        })
     }
 }

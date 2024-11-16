@@ -1,4 +1,4 @@
-package com.siamsaleh.taskgo.ui.home
+package com.siamsaleh.taskgo.ui.screens.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

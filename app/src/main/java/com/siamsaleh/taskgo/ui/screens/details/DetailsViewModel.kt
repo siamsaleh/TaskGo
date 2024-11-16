@@ -1,4 +1,4 @@
-package com.siamsaleh.taskgo.ui.home
+package com.siamsaleh.taskgo.ui.screens.details
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,17 +12,17 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class DetailsViewModel @Inject constructor(
     private val mainUseCase: MainUseCase
-) : ViewModel() {
+) : ViewModel(){
 
-    private val _recommendedList = MutableLiveData<UiState<List<RecommendedItem>>>()
-    val recommendedList: LiveData<UiState<List<RecommendedItem>>> get() = _recommendedList
+    private val _recommendedItem = MutableLiveData<UiState<RecommendedItem>>()
+    val recommendedItem: LiveData<UiState<RecommendedItem>> get() = _recommendedItem
 
-    suspend fun getRecommendedPlace(){
-        _recommendedList.postValue(UiState.Loading)
+    suspend fun setRecommendedItem(recommendedItem: RecommendedItem?) {
+        _recommendedItem.postValue(UiState.Loading)
         viewModelScope.launch {
-            _recommendedList.postValue(mainUseCase.getRecommendedPlace())
+            _recommendedItem.postValue(mainUseCase.setRecommendedItem(recommendedItem))
         }
     }
 }

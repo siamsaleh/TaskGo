@@ -1,4 +1,4 @@
-package com.siamsaleh.taskgo.ui.home.adapter
+package com.siamsaleh.taskgo.ui.adapters
 
 import android.content.Context
 import android.view.LayoutInflater

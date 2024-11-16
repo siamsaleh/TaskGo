@@ -8,4 +8,11 @@
     </style>
 
     <style name="Theme.TaskGo" parent="Base.Theme.TaskGo" />
+
+    <style name="Theme.TranslucentStatusBar" parent="Base.Theme.TaskGo">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
 </resources>

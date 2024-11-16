@@ -17,4 +17,12 @@ class MainRepository @Inject constructor(
             UiState.Error(ex.message ?: "Unknown error occurred")
         }
     }
+
+    override suspend fun setRecommendedItem(recommendedItem: RecommendedItem?): UiState<RecommendedItem> {
+        return if (recommendedItem != null) {
+            UiState.Success(recommendedItem)
+        } else {
+            UiState.Error("Data not found")
+        }
+    }
 }

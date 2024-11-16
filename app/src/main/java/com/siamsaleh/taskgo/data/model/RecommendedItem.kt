@@ -1,6 +1,7 @@
 package com.siamsaleh.taskgo.data.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class RecommendedItem(
     @SerializedName("property_name")
@@ -18,4 +19,8 @@ data class RecommendedItem(
     @SerializedName("detail_images")
     val detailImages: List<String?>? = null,
     val currency: String? = null
-)
+) : Serializable {
+    companion object {
+        const val RECOMMENDED_ITEM_KEY = "RecommendedItem"
+    }
+}
