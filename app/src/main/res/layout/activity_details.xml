@@ -13,13 +13,114 @@
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!--Image Slide-->
             <com.siamsaleh.taskgo.ui.components.CustomImageSlider
                 android:id="@+id/customImageSlider"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/image_slider_size" />
+
+            <!--Property || Rating-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_extra_large"
+                android:layout_marginEnd="@dimen/margin_small">
+
+                <TextView
+                    android:id="@+id/property_text"
+                    style="@style/DetailsTitleTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_30sdp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/app_name"
+                    app:layout_constraintEnd_toStartOf="@+id/rating_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/rating_text"
+                    style="@style/RatingTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/_3sdp"
+                    android:text="@string/_4_9_text"
+                    app:drawableStartCompat="@drawable/ic_star"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!--Location-->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/locationContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_large"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/profileIcon"
+                app:layout_constraintStart_toEndOf="@id/categoryIcon"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/locationIcon"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:contentDescription="@string/location_text"
+                    android:src="@drawable/ic_location" />
+
+                <TextView
+                    android:id="@+id/location_text"
+                    style="@style/DetailsLocationTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:text="@string/new_york_ny_text" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <!--About Trip-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_small"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/DetailsTitleTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/about_the_trip_text" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/cat_icon_size"
+                    android:layout_height="@dimen/cat_icon_size"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:src="@drawable/ic_emoji" />
+
+            </LinearLayout>
+
+            <at.blogc.android.views.ExpandableTextView
+                android:id="@+id/description_text"
+                style="@style/DetailsDescriptionTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_large"
+                android:text="@string/sample_text"
+                android:textIsSelectable="true" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -27,14 +128,85 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivBackArrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
         android:layout_marginStart="@dimen/margin_small"
-        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_extra_large"
         android:clickable="true"
         android:contentDescription="@string/back_arrow_text"
         android:focusable="true"
-        android:padding="@dimen/_6sdp"
         android:src="@drawable/ic_back_arrow" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:alpha=".1"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/dollar_text"
+            style="@style/DetailsDollarTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_large"
+            android:text="@string/dollar_text"
+            app:layout_constraintBottom_toBottomOf="@+id/price_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/price_text" />
+
+        <TextView
+            android:id="@+id/price_text"
+            style="@style/DetailsPriceTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:text="@string/_5_307_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/dollar_text"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/price_unit_text"
+            style="@style/DetailsPerDayTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:text="@string/per_day_text"
+            app:layout_constraintBottom_toBottomOf="@+id/price_text"
+            app:layout_constraintStart_toEndOf="@+id/price_text"
+            app:layout_constraintTop_toTopOf="@+id/price_text" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="157dp"
+            android:layout_height="55dp"
+            android:layout_marginEnd="@dimen/margin_large"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_bg">
+
+                <TextView
+                    style="@style/BookButtonTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/book_now_text" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

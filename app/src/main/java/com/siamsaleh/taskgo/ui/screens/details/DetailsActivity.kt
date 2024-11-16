@@ -3,12 +3,15 @@ package com.siamsaleh.taskgo.ui.screens.details
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.siamsaleh.taskgo.R
 import com.siamsaleh.taskgo.data.model.RecommendedItem
 import com.siamsaleh.taskgo.databinding.ActivityDetailsBinding
 import com.siamsaleh.taskgo.ui.base.BaseActivity
+import com.siamsaleh.taskgo.util.CommonUtils
 import com.siamsaleh.taskgo.util.UiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 @AndroidEntryPoint
 class DetailsActivity : BaseActivity() {
@@ -29,16 +32,6 @@ class DetailsActivity : BaseActivity() {
         binding.ivBackArrow.setOnClickListener {
             finish()
         }
-
-        // List of image URLs
-        val imageUrls = listOf(
-            "https://picsum.photos/300/200",
-            "https://picsum.photos/id/237/300/200",
-            "https://picsum.photos/seed/picsum/300/200"
-        )
-
-        // Set the images
-        binding.customImageSlider.setImages(imageUrls)
     }
 
     private fun setupObserver() {
@@ -65,7 +58,25 @@ class DetailsActivity : BaseActivity() {
     }
 
     private fun handleRecommendedItemSuccess(recommendedItem: RecommendedItem) {
-        //binding.image.loadImage(this@DetailsActivity, recommendedItem.detailImages?.get(0))
+
+        binding.apply {
+            // Set the images
+            customImageSlider.setImages(recommendedItem.detailImages)
+
+            propertyText.text = recommendedItem.propertyName
+            ratingText.text = recommendedItem.rating.toString()
+            locationText.text = recommendedItem.location
+
+            // Set Description
+            recommendedItem.description?.let {
+                CommonUtils.seeMoreText(descriptionText, it)
+            }
+
+            priceText.text = CommonUtils.formatNumberWithThousandsSeparator(recommendedItem.fare)
+
+            val fareUnit = recommendedItem.fareUnit?.uppercase(Locale.getDefault()) ?: ""
+            priceUnitText.text = this@DetailsActivity.getString(R.string.fare_unit_format, fareUnit)
+        }
     }
 
     private fun loadLiveData() {

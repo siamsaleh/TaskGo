@@ -14,6 +14,39 @@
         <item name="android:textColor">@color/text_color</item>
     </style>
 
+    <style name="DetailsTitleTextStyle">
+        <item name="android:fontFamily">@font/rubik_bold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/text_color_100</item>
+    </style>
+
+    <style name="DetailsSubTitleTextStyle">
+        <item name="android:fontFamily">@font/rubik_medium</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/text_color_100</item>
+    </style>
+
+    <style name="DetailsPriceTextStyle">
+        <item name="android:fontFamily">@font/rubik_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:alpha">.9</item>
+        <item name="android:textColor">@color/text_color_100</item>
+    </style>
+
+    <style name="DetailsDollarTextStyle">
+        <item name="android:fontFamily">@font/rubik_bold</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:alpha">.9</item>
+        <item name="android:textColor">@color/text_color_100</item>
+    </style>
+
+    <style name="DetailsPerDayTextStyle">
+        <item name="android:fontFamily">@font/rubik_medium</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:alpha">.3</item>
+        <item name="android:textColor">@color/text_color_100</item>
+    </style>
+
     <style name="CategoryTextStyle">
         <item name="android:fontFamily">@font/gilroy_medium</item>
         <item name="android:textSize">13sp</item>
@@ -37,6 +70,33 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeBottomLeft">40dp</item>
         <item name="cornerSizeBottomRight">40dp</item>
+    </style>
+
+    <style name="RatingTextStyle">
+        <item name="android:fontFamily">@font/rubik_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_color_100</item>
+        <item name="android:alpha">.7</item>
+    </style>
+
+    <style name="DetailsLocationTextStyle">
+        <item name="android:fontFamily">@font/rubik_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:alpha">.7</item>
+        <item name="android:textColor">@color/text_color</item>
+    </style>
+
+    <style name="BookButtonTextStyle">
+        <item name="android:fontFamily">@font/rubik_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_color_dark</item>
+    </style>
+
+    <style name="DetailsDescriptionTextStyle">
+        <item name="android:fontFamily">@font/rubik_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:alpha">.7</item>
+        <item name="android:textColor">@color/text_color_100</item>
     </style>
 
 </resources>

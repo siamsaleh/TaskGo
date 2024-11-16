@@ -17,4 +17,12 @@
     <string name="bookmark_text">Bookmark</string>
     <string name="no_data_found_text">No data found</string>
     <string name="back_arrow_text">back arrow</string>
+    <string name="_4_9_text">4.9</string>
+    <string name="about_the_trip_text">About the trip</string>
+    <string name="_5_307_text">5,307</string>
+    <string name="dollar_text">$</string>
+    <string name="per_day_text">/ PER DAY</string>
+    <string name="book_now_text">Book Now</string>
+    <string name="fare_unit_format">/ %1$s</string>
+    <string name="sample_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</string>
 </resources>

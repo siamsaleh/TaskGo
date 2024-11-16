@@ -30,26 +30,26 @@ class CustomImageSlider @JvmOverloads constructor(
         dotContainer = findViewById(R.id.dotContainer)
     }
 
-    fun setImages(imageUrls: List<String>, autoSlideInterval: Long = 3000L) {
+    fun setImages(imageUrls: List<String?>?, autoSlideInterval: Long = 3000L) {
         // Set up the adapter
         val adapter = CustomImageSliderAdapter(context, imageUrls)
         viewPager.adapter = adapter
 
         // Create dots
-        createDots(imageUrls.size)
+        imageUrls?.let { createDots(it.size) }
 
         // Update dots on page change
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 currentPage = position
-                updateDots(position, imageUrls.size)
+                imageUrls?.let { updateDots(position, it.size) }
             }
         })
 
         // Start auto-slide
         if (autoSlideInterval > 0) {
-            startAutoSlide(imageUrls.size, autoSlideInterval)
+            imageUrls?.let { startAutoSlide(it.size, autoSlideInterval) }
         }
     }
 

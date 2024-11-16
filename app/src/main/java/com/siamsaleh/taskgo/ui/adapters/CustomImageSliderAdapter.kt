@@ -12,7 +12,7 @@ import com.siamsaleh.taskgo.R
 
 class CustomImageSliderAdapter(
     private val context: Context,
-    private val imageList: List<String> // List of image URLs or drawable resources
+    private val imageList: List<String?>? // List of image URLs or drawable resources
 ) : RecyclerView.Adapter<CustomImageSliderAdapter.SliderViewHolder>() {
 
     inner class SliderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -25,17 +25,19 @@ class CustomImageSliderAdapter(
     }
 
     override fun onBindViewHolder(holder: SliderViewHolder, position: Int) {
-        val imageUrl = imageList[position]
+        val imageUrl = imageList?.get(position)
 
         // Load the image into ShapeableImageView using Glide
         Glide.with(context)
             .load(imageUrl)
+            .placeholder(R.drawable.gradient_bg)
+            .error(R.drawable.gradient_bg)
             .transform(RoundedCorners(30)) // Apply rounded corners to each image
             .into(holder.imageView)
     }
 
     override fun getItemCount(): Int {
-        return imageList.size
+        return imageList?.size ?: 0
     }
 }
 

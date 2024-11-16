@@ -76,4 +76,7 @@ dependencies {
 
     // Facebook Shimmer Effect
     implementation(libs.shimmer)
+
+    // Expandable Text
+    implementation(libs.expandabletextview)
 }
