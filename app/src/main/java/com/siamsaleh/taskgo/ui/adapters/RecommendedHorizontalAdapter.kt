@@ -5,48 +5,41 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.siamsaleh.taskgo.data.model.RecommendedItem
-import com.siamsaleh.taskgo.databinding.ItemRecommendedPlaceBinding
+import com.siamsaleh.taskgo.databinding.ItemRecommendedPlaceHorizontalBinding
+import com.siamsaleh.taskgo.ui.base.BaseViewHolder
+import com.siamsaleh.taskgo.ui.listener.OnItemClickListener
 import com.siamsaleh.taskgo.util.loadImage
 
-
-class RecommendedAdapter(
+class RecommendedHorizontalAdapter(
     private val context: Context,
     private val recommendedList: List<RecommendedItem>,
     private val onItemClickListener: OnItemClickListener
-) :
-    RecyclerView.Adapter<RecommendedAdapter.RecommendedViewHolder>() {
+) : RecyclerView.Adapter<BaseViewHolder<RecommendedItem>>() {
 
-
-    interface OnItemClickListener {
-        fun onItemClick(recommendedItem: RecommendedItem)
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendedViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<RecommendedItem> {
         val layoutInflater = LayoutInflater.from(context)
-        val binding = ItemRecommendedPlaceBinding.inflate(layoutInflater, parent, false)
+        val binding = ItemRecommendedPlaceHorizontalBinding.inflate(layoutInflater, parent, false)
         return RecommendedViewHolder(binding)
     }
 
-    override fun getItemCount(): Int {
-        return recommendedList.size
-    }
+    override fun getItemCount(): Int = recommendedList.size
 
-    override fun onBindViewHolder(holder: RecommendedViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BaseViewHolder<RecommendedItem>, position: Int) {
         holder.bind(recommendedList[position])
     }
 
     inner class RecommendedViewHolder(
-        private val binding: ItemRecommendedPlaceBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
+        private val binding: ItemRecommendedPlaceHorizontalBinding
+    ) : BaseViewHolder<RecommendedItem>(binding.root) {
 
-        fun bind(item: RecommendedItem) {
+        override fun bind(item: RecommendedItem) {
             binding.apply {
                 recommendedImg.loadImage(context, item.heroImage)
                 propertyText.text = item.propertyName
                 locationText.text = item.location
             }
 
-            itemView.setOnClickListener{
+            itemView.setOnClickListener {
                 onItemClickListener.onItemClick(item)
             }
         }

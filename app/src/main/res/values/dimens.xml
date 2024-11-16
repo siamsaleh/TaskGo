@@ -14,6 +14,8 @@
     <dimen name="cat_icon_size">30dp</dimen>
     <dimen name="bookmark_size">42dp</dimen>
 
+    <dimen name="app_bar_size">42dp</dimen>
+
     <dimen name="image_slider_size">350dp</dimen>
     <dimen name="dot_size">5dp</dimen>
     <dimen name="dot_radius">5dp</dimen>

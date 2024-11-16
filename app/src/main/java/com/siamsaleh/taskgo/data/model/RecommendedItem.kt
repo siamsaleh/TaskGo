@@ -22,5 +22,6 @@ data class RecommendedItem(
 ) : Serializable {
     companion object {
         const val RECOMMENDED_ITEM_KEY = "RecommendedItem"
+        const val RECOMMENDED_LIST_KEY = "RecommendedList"
     }
 }

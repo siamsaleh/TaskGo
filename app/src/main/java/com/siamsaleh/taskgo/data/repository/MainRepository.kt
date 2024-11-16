@@ -25,4 +25,12 @@ class MainRepository @Inject constructor(
             UiState.Error("Data not found")
         }
     }
+
+    override fun setRecommendedList(recommendedItemList: List<RecommendedItem>?): UiState<List<RecommendedItem>> {
+        return if (recommendedItemList != null) {
+            UiState.Success(recommendedItemList)
+        } else {
+            UiState.Error("Data not found")
+        }
+    }
 }

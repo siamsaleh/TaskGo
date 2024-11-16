@@ -246,6 +246,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/see_all_btn"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_18sdp"
             android:contentDescription="@string/see_all_text"
@@ -301,6 +302,6 @@
         android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="3"
-        tools:listitem="@layout/item_recommended_place" />
+        tools:listitem="@layout/item_recommended_place_horizontal" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

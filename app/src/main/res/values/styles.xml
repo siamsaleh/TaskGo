@@ -20,10 +20,10 @@
         <item name="android:textColor">@color/text_color_100</item>
     </style>
 
-    <style name="DetailsSubTitleTextStyle">
+    <style name="AppBarTitleTextStyle">
         <item name="android:fontFamily">@font/rubik_medium</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/text_color_100</item>
+        <item name="android:textColor">@color/text_color</item>
     </style>
 
     <style name="DetailsPriceTextStyle">

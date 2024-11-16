@@ -1,50 +1,56 @@
-package com.siamsaleh.taskgo.ui.screens.home
+package com.siamsaleh.taskgo.ui.screens.seedetails
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import com.siamsaleh.taskgo.R
 import com.siamsaleh.taskgo.data.model.RecommendedItem
-import com.siamsaleh.taskgo.databinding.FragmentHomeBinding
-import com.siamsaleh.taskgo.ui.base.BaseFragment
-import com.siamsaleh.taskgo.ui.screens.details.DetailsActivity
-import com.siamsaleh.taskgo.ui.adapters.RecommendedHorizontalAdapter
+import com.siamsaleh.taskgo.databinding.ActivitySeeDetailsBinding
+import com.siamsaleh.taskgo.ui.adapters.RecommendedVerticalAdapter
+import com.siamsaleh.taskgo.ui.base.BaseActivity
 import com.siamsaleh.taskgo.ui.listener.OnItemClickListener
-import com.siamsaleh.taskgo.ui.screens.seedetails.SeeDetailsActivity
+import com.siamsaleh.taskgo.ui.screens.details.DetailsActivity
 import com.siamsaleh.taskgo.util.UiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment(), OnItemClickListener {
+class SeeDetailsActivity : BaseActivity(), OnItemClickListener {
 
-    private lateinit var binding: FragmentHomeBinding
-    private val viewModel: HomeViewModel by viewModels()
+    private lateinit var binding: ActivitySeeDetailsBinding
+    private val viewModel: SeeDetailsViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        binding = ActivitySeeDetailsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // Setup observer
         setupObserver()
 
         // Load live data
         loadLiveData()
+
+        binding.ivBackArrow.setOnClickListener {
+            finish()
+        }
+    }
+
+    private fun loadLiveData() {
+        val recommendedList: List<RecommendedItem>? =
+            intent.serializable(RecommendedItem.RECOMMENDED_LIST_KEY)
+
+        lifecycleScope.launch {
+            viewModel.setRecommendedList(recommendedList)
+        }
     }
 
     private fun setupObserver() {
-        viewModel.recommendedList.observe(viewLifecycleOwner) {
+        viewModel.recommendedList.observe(this@SeeDetailsActivity) {
             handleRecommendedList(it)
         }
     }
@@ -71,17 +77,14 @@ class HomeFragment : BaseFragment(), OnItemClickListener {
 
                 if (recommendedResult.data.isNotEmpty()) {
 
-                    binding.rvRecommended.adapter = RecommendedHorizontalAdapter(
-                        context = requireContext(),
-                        recommendedList = recommendedResult.data,
-                        onItemClickListener = this@HomeFragment
-                    )
+                    binding.rvRecommended.layoutManager =
+                        GridLayoutManager(this@SeeDetailsActivity, 2)
 
-                    binding.seeAllBtn.setOnClickListener {
-                        startActivity(Intent(requireActivity(), SeeDetailsActivity::class.java).apply {
-                            putExtra(RecommendedItem.RECOMMENDED_LIST_KEY, ArrayList(recommendedResult.data))
-                        })
-                    }
+                    binding.rvRecommended.adapter = RecommendedVerticalAdapter(
+                        context = this@SeeDetailsActivity,
+                        recommendedList = recommendedResult.data,
+                        onItemClickListener = this@SeeDetailsActivity
+                    )
 
                     binding.tvStatus.visibility = View.GONE
                     binding.rvRecommended.visibility = View.VISIBLE
@@ -96,14 +99,8 @@ class HomeFragment : BaseFragment(), OnItemClickListener {
         }
     }
 
-    private fun loadLiveData() {
-        lifecycleScope.launch {
-            viewModel.getRecommendedPlace()
-        }
-    }
-
     override fun onItemClick(recommendedItem: RecommendedItem) {
-        startActivity(Intent(requireActivity(), DetailsActivity::class.java).apply {
+        startActivity(Intent(this@SeeDetailsActivity, DetailsActivity::class.java).apply {
             putExtra(RecommendedItem.RECOMMENDED_ITEM_KEY, recommendedItem)
         })
     }
