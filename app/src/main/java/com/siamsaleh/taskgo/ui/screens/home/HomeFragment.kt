@@ -53,17 +53,23 @@ class HomeFragment : BaseFragment(), OnItemClickListener {
 
         when (recommendedResult) {
             is UiState.Loading -> {
-                binding.rvRecommended.visibility = View.GONE
-                binding.tvStatus.visibility = View.GONE
-                binding.loadingEffect.visibility = View.VISIBLE
+
+                binding.apply {
+                    rvRecommended.visibility = View.GONE
+                    tvStatus.visibility = View.GONE
+                    loadingEffect.visibility = View.VISIBLE
+                }
             }
 
             is UiState.Error -> {
-                binding.tvStatus.text = recommendedResult.message
 
-                binding.rvRecommended.visibility = View.GONE
-                binding.loadingEffect.visibility = View.GONE
-                binding.tvStatus.visibility = View.VISIBLE
+                binding.apply {
+                    tvStatus.text = recommendedResult.message
+
+                    rvRecommended.visibility = View.GONE
+                    loadingEffect.visibility = View.GONE
+                    tvStatus.visibility = View.VISIBLE
+                }
             }
 
             is UiState.Success -> {
@@ -71,26 +77,32 @@ class HomeFragment : BaseFragment(), OnItemClickListener {
 
                 if (recommendedResult.data.isNotEmpty()) {
 
-                    binding.rvRecommended.adapter = RecommendedHorizontalAdapter(
-                        context = requireContext(),
-                        recommendedList = recommendedResult.data,
-                        onItemClickListener = this@HomeFragment
-                    )
+                    binding.apply {
+                        rvRecommended.adapter = RecommendedHorizontalAdapter(
+                            context = requireContext(),
+                            recommendedList = recommendedResult.data,
+                            onItemClickListener = this@HomeFragment
+                        )
 
-                    binding.seeAllBtn.setOnClickListener {
-                        startActivity(Intent(requireActivity(), SeeDetailsActivity::class.java).apply {
-                            putExtra(RecommendedItem.RECOMMENDED_LIST_KEY, ArrayList(recommendedResult.data))
-                        })
+                        // Sent recommendedList for reducing Api call
+                        seeAllBtn.setOnClickListener {
+                            startActivity(Intent(requireActivity(), SeeDetailsActivity::class.java).apply {
+                                putExtra(RecommendedItem.RECOMMENDED_LIST_KEY, ArrayList(recommendedResult.data))
+                            })
+                        }
+
+                        tvStatus.visibility = View.GONE
+                        rvRecommended.visibility = View.VISIBLE
                     }
 
-                    binding.tvStatus.visibility = View.GONE
-                    binding.rvRecommended.visibility = View.VISIBLE
-
                 } else {
-                    binding.tvStatus.text = getString(R.string.no_data_found_text)
 
-                    binding.rvRecommended.visibility = View.GONE
-                    binding.tvStatus.visibility = View.VISIBLE
+                    binding.apply {
+                        tvStatus.text = getString(R.string.no_data_found_text)
+
+                        rvRecommended.visibility = View.GONE
+                        tvStatus.visibility = View.VISIBLE
+                    }
                 }
             }
         }

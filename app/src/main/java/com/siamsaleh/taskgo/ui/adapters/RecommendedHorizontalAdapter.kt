@@ -2,6 +2,7 @@ package com.siamsaleh.taskgo.ui.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.siamsaleh.taskgo.data.model.RecommendedItem
@@ -25,18 +26,22 @@ class RecommendedHorizontalAdapter(
     override fun getItemCount(): Int = recommendedList.size
 
     override fun onBindViewHolder(holder: BaseViewHolder<RecommendedItem>, position: Int) {
-        holder.bind(recommendedList[position])
+        holder.bind(recommendedList[position], position)
     }
 
     inner class RecommendedViewHolder(
         private val binding: ItemRecommendedPlaceHorizontalBinding
     ) : BaseViewHolder<RecommendedItem>(binding.root) {
 
-        override fun bind(item: RecommendedItem) {
+        override fun bind(item: RecommendedItem, position: Int) {
             binding.apply {
                 recommendedImg.loadImage(context, item.heroImage)
                 propertyText.text = item.propertyName
                 locationText.text = item.location
+
+                if (position == 0) {
+                    bookmarkIcon.visibility = View.VISIBLE
+                }
             }
 
             itemView.setOnClickListener {

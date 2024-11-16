@@ -67,241 +67,255 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <EditText
-        android:id="@+id/searchET"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/edittext_height"
-        android:layout_marginStart="@dimen/margin_large"
-        android:layout_marginTop="@dimen/margin_extra_large"
-        android:layout_marginEnd="@dimen/margin_large"
-        android:autofillHints="search"
-        android:background="@drawable/search_bg"
-        android:drawableStart="@drawable/ic_search"
-        android:drawablePadding="10dp"
-        android:hint="@string/search_text"
-        android:inputType="text"
-        android:paddingStart="@dimen/margin_small"
-        android:paddingEnd="@dimen/margin_small"
-        android:textColor="@color/text_color"
-        android:textColorHint="@color/text_hint_color"
-        android:textSize="14sp" />
-
-    <TextView
-        style="@style/TitleTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_large"
-        android:layout_marginTop="@dimen/margin_extra_large"
-        android:text="@string/popular_categories_text" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/category_height"
-        android:layout_marginStart="@dimen/margin_large"
-        android:layout_marginTop="@dimen/margin_small"
-        android:layout_marginEnd="@dimen/margin_large"
-        android:baselineAligned="false"
-        android:orientation="horizontal"
-        android:weightSum="4">
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/search_bg">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/flightsIcon"
-                    android:layout_width="@dimen/cat_icon_size"
-                    android:layout_height="@dimen/cat_icon_size"
-                    android:contentDescription="@string/flights_text"
-                    android:src="@drawable/ic_flights" />
-
-                <TextView
-                    style="@style/CategoryTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_2sdp"
-                    android:text="@string/flights_text" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/category_gap"
-            android:layout_weight="1"
-            android:background="@drawable/search_bg">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/hotelsIcon"
-                    android:layout_width="@dimen/cat_icon_size"
-                    android:layout_height="@dimen/cat_icon_size"
-                    android:layout_centerHorizontal="true"
-                    android:contentDescription="@string/hotels_text"
-                    android:src="@drawable/ic_hotels" />
-
-                <TextView
-                    style="@style/CategoryTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_2sdp"
-                    android:text="@string/hotels_text" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/category_gap"
-            android:layout_weight="1"
-            android:background="@drawable/search_bg">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/visaIcon"
-                    android:layout_width="@dimen/cat_icon_size"
-                    android:layout_height="@dimen/cat_icon_size"
-                    android:contentDescription="@string/visa_text"
-                    android:src="@drawable/ic_visa" />
-
-                <TextView
-                    style="@style/CategoryTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_2sdp"
-                    android:text="@string/visa_text" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/category_gap"
-            android:layout_weight="1"
-            android:background="@drawable/search_bg">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/busesIcon"
-                    android:layout_width="@dimen/cat_icon_size"
-                    android:layout_height="@dimen/cat_icon_size"
-                    android:contentDescription="@string/buses_text"
-                    android:src="@drawable/ic_buses" />
-
-                <TextView
-                    style="@style/CategoryTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_2sdp"
-                    android:text="@string/buses_text" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </RelativeLayout>
-
-    </LinearLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_large"
-        android:layout_marginTop="@dimen/margin_extra_large"
-        android:layout_marginEnd="@dimen/margin_small">
+        android:layout_marginTop="10dp">
 
-        <TextView
-            style="@style/TitleTextStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/recommended_text"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/see_all_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_18sdp"
-            android:contentDescription="@string/see_all_text"
-            android:src="@drawable/ic_see_all"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/margin_small"
-        android:layout_marginStart="@dimen/margin_large"
-        android:layout_marginEnd="@dimen/margin_large"
-        android:text="@string/no_data_found_text"
-        android:textAlignment="center"
-        android:visibility="gone" />
-
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/loadingEffect"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_large"
-        android:layout_marginTop="@dimen/margin_small"
-        android:visibility="visible">
-
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <include layout="@layout/item_recommended_place_loading" />
+            <EditText
+                android:id="@+id/searchET"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edittext_height"
+                android:layout_marginStart="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_large"
+                android:autofillHints="search"
+                android:background="@drawable/search_bg"
+                android:drawableStart="@drawable/ic_search"
+                android:drawablePadding="10dp"
+                android:hint="@string/search_text"
+                android:inputType="text"
+                android:paddingStart="@dimen/margin_small"
+                android:paddingEnd="@dimen/margin_small"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_hint_color"
+                android:textSize="14sp" />
 
-            <include layout="@layout/item_recommended_place_loading" />
+            <TextView
+                style="@style/TitleTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_large"
+                android:text="@string/popular_categories_text" />
 
-            <include layout="@layout/item_recommended_place_loading" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/category_height"
+                android:layout_marginStart="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_large"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:weightSum="4">
 
-        </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/search_bg">
 
-    </com.facebook.shimmer.ShimmerFrameLayout>
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvRecommended"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_large"
-        android:layout_marginTop="@dimen/margin_small"
-        android:orientation="horizontal"
-        android:visibility="gone"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="3"
-        tools:listitem="@layout/item_recommended_place_horizontal" />
+                        <ImageView
+                            android:id="@+id/flightsIcon"
+                            android:layout_width="@dimen/cat_icon_size"
+                            android:layout_height="@dimen/cat_icon_size"
+                            android:contentDescription="@string/flights_text"
+                            android:src="@drawable/ic_flights" />
+
+                        <TextView
+                            style="@style/CategoryTextStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:text="@string/flights_text" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/category_gap"
+                    android:layout_weight="1"
+                    android:background="@drawable/search_bg">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/hotelsIcon"
+                            android:layout_width="@dimen/cat_icon_size"
+                            android:layout_height="@dimen/cat_icon_size"
+                            android:layout_centerHorizontal="true"
+                            android:contentDescription="@string/hotels_text"
+                            android:src="@drawable/ic_hotels" />
+
+                        <TextView
+                            style="@style/CategoryTextStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:text="@string/hotels_text" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/category_gap"
+                    android:layout_weight="1"
+                    android:background="@drawable/search_bg">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/visaIcon"
+                            android:layout_width="@dimen/cat_icon_size"
+                            android:layout_height="@dimen/cat_icon_size"
+                            android:contentDescription="@string/visa_text"
+                            android:src="@drawable/ic_visa" />
+
+                        <TextView
+                            style="@style/CategoryTextStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:text="@string/visa_text" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/category_gap"
+                    android:layout_weight="1"
+                    android:background="@drawable/search_bg">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/busesIcon"
+                            android:layout_width="@dimen/cat_icon_size"
+                            android:layout_height="@dimen/cat_icon_size"
+                            android:contentDescription="@string/buses_text"
+                            android:src="@drawable/ic_buses" />
+
+                        <TextView
+                            style="@style/CategoryTextStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:text="@string/buses_text" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginEnd="@dimen/margin_large">
+
+                <TextView
+                    style="@style/TitleTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recommended_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/see_all_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_18sdp"
+                    android:contentDescription="@string/see_all_text"
+                    android:src="@drawable/ic_see_all"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_large"
+                android:text="@string/no_data_found_text"
+                android:textAlignment="center"
+                android:visibility="gone" />
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/loadingEffect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_small"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <include layout="@layout/item_recommended_place_loading" />
+
+                    <include layout="@layout/item_recommended_place_loading" />
+
+                    <include layout="@layout/item_recommended_place_loading" />
+
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvRecommended"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_small"
+                android:orientation="horizontal"
+                android:visibility="visible"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_recommended_place_horizontal" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
