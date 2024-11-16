@@ -1,6 +1,8 @@
 package com.siamsaleh.taskgo.ui.components
 
 import android.content.Context
+import android.os.Handler
+import android.os.Looper
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.ImageView
@@ -18,6 +20,9 @@ class CustomImageSlider @JvmOverloads constructor(
 
     private val viewPager: ViewPager2
     private val dotContainer: LinearLayout
+    private val handler = Handler(Looper.getMainLooper())
+    private var currentPage = 0
+    private var autoSlideRunnable: Runnable? = null
 
     init {
         LayoutInflater.from(context).inflate(R.layout.custom_image_slider, this, true)
@@ -25,7 +30,7 @@ class CustomImageSlider @JvmOverloads constructor(
         dotContainer = findViewById(R.id.dotContainer)
     }
 
-    fun setImages(imageUrls: List<String>) {
+    fun setImages(imageUrls: List<String>, autoSlideInterval: Long = 3000L) {
         // Set up the adapter
         val adapter = CustomImageSliderAdapter(context, imageUrls)
         viewPager.adapter = adapter
@@ -37,9 +42,15 @@ class CustomImageSlider @JvmOverloads constructor(
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
+                currentPage = position
                 updateDots(position, imageUrls.size)
             }
         })
+
+        // Start auto-slide
+        if (autoSlideInterval > 0) {
+            startAutoSlide(imageUrls.size, autoSlideInterval)
+        }
     }
 
     private fun createDots(count: Int) {
@@ -66,5 +77,20 @@ class CustomImageSlider @JvmOverloads constructor(
                 dot.setImageResource(R.drawable.inactive_dot) // Inactive dot
             }
         }
+    }
+
+    private fun startAutoSlide(itemCount: Int, interval: Long) {
+        autoSlideRunnable = Runnable {
+            if (itemCount > 1) {
+                currentPage = (currentPage + 1) % itemCount
+                viewPager.setCurrentItem(currentPage, true)
+                handler.postDelayed(autoSlideRunnable!!, interval)
+            }
+        }
+        handler.postDelayed(autoSlideRunnable!!, interval)
+    }
+
+    fun stopAutoSlide() {
+        handler.removeCallbacks(autoSlideRunnable!!)
     }
 }

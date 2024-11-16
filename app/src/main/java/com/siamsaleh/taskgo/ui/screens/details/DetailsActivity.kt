@@ -76,4 +76,10 @@ class DetailsActivity : BaseActivity() {
             viewModel.setRecommendedItem(recommendedItem)
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Stop auto-slide to avoid memory leaks
+        binding.customImageSlider.stopAutoSlide()
+    }
 }
