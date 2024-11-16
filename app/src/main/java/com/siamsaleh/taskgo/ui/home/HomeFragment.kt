@@ -9,12 +9,13 @@ import androidx.lifecycle.lifecycleScope
 import com.siamsaleh.taskgo.data.model.RecommendedItem
 import com.siamsaleh.taskgo.databinding.FragmentHomeBinding
 import com.siamsaleh.taskgo.ui.BaseFragment
+import com.siamsaleh.taskgo.ui.home.adapter.RecommendedAdapter
 import com.siamsaleh.taskgo.util.UiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment() {
+class HomeFragment : BaseFragment(), RecommendedAdapter.OnItemClickListener {
 
     private lateinit var binding: FragmentHomeBinding
     private val viewModel: HomeViewModel by viewModels()
@@ -43,30 +44,37 @@ class HomeFragment : BaseFragment() {
         }
     }
 
-    private fun handleRecommendedList(recommendedListUiState: UiState<List<RecommendedItem>>) {
+    private fun handleRecommendedList(recommendedResult: UiState<List<RecommendedItem>>) {
 
-        when (recommendedListUiState) {
+        when (recommendedResult) {
             is UiState.Loading -> {
                 // Nothing to do..
             }
 
             is UiState.Error -> {
-                showToast(recommendedListUiState.message)
+                showToast(recommendedResult.message)
             }
 
             is UiState.Success -> {
-                handleRecommendedListSuccess(recommendedListUiState.data)
+                if (recommendedResult.data.isNotEmpty()) {
+                    binding.rvRecommended.adapter =
+                        RecommendedAdapter(
+                            requireContext(),
+                            recommendedResult.data,
+                            this@HomeFragment
+                        )
+                }
             }
         }
-    }
-
-    private fun handleRecommendedListSuccess(data: List<RecommendedItem>) {
-        //Log.d("UISTATE", "handleRecommendedListSuccess: $data")
     }
 
     private fun loadLiveData() {
         lifecycleScope.launch {
             viewModel.getRecommendedPlace()
         }
+    }
+
+    override fun onItemClick(recommendedItem: RecommendedItem) {
+        recommendedItem.location?.let { showToast(it) }
     }
 }

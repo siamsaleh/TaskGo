@@ -69,4 +69,8 @@ dependencies {
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-compiler:$hiltVersion")
     implementation("com.google.dagger:hilt-android-gradle-plugin:$hiltVersion")
+
+    // Glide
+    implementation (libs.glide)
+    annotationProcessor (libs.compiler)
 }
