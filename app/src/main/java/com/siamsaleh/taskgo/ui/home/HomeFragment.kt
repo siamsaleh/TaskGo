@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.siamsaleh.taskgo.R
 import com.siamsaleh.taskgo.data.model.RecommendedItem
 import com.siamsaleh.taskgo.databinding.FragmentHomeBinding
 import com.siamsaleh.taskgo.ui.BaseFragment
@@ -48,14 +49,22 @@ class HomeFragment : BaseFragment(), RecommendedAdapter.OnItemClickListener {
 
         when (recommendedResult) {
             is UiState.Loading -> {
-                // Nothing to do..
+                binding.rvRecommended.visibility = View.GONE
+                binding.tvStatus.visibility = View.GONE
+                binding.loadingEffect.visibility = View.VISIBLE
             }
 
             is UiState.Error -> {
-                showToast(recommendedResult.message)
+                binding.tvStatus.text = recommendedResult.message
+
+                binding.rvRecommended.visibility = View.GONE
+                binding.loadingEffect.visibility = View.GONE
+                binding.tvStatus.visibility = View.VISIBLE
             }
 
             is UiState.Success -> {
+                binding.loadingEffect.visibility = View.GONE
+
                 if (recommendedResult.data.isNotEmpty()) {
                     binding.rvRecommended.adapter =
                         RecommendedAdapter(
@@ -63,6 +72,15 @@ class HomeFragment : BaseFragment(), RecommendedAdapter.OnItemClickListener {
                             recommendedResult.data,
                             this@HomeFragment
                         )
+
+                    binding.tvStatus.visibility = View.GONE
+                    binding.rvRecommended.visibility = View.VISIBLE
+
+                } else {
+                    binding.tvStatus.text = getString(R.string.no_data_found_text)
+
+                    binding.rvRecommended.visibility = View.GONE
+                    binding.tvStatus.visibility = View.VISIBLE
                 }
             }
         }

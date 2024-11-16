@@ -73,4 +73,7 @@ dependencies {
     // Glide
     implementation (libs.glide)
     annotationProcessor (libs.compiler)
+
+    // Facebook Shimmer Effect
+    implementation(libs.shimmer)
 }

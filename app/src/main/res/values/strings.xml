@@ -15,4 +15,5 @@
     <string name="mountain_safari_text">Mountain Safari</string>
     <string name="india_text">India</string>
     <string name="bookmark_text">Bookmark</string>
+    <string name="no_data_found_text">No data found</string>
 </resources>
