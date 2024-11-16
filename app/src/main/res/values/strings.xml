@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TaskGo</string>
+    <string name="app_name">Task Go</string>
     <string name="profile_img">profile_img</string>
     <string name="category_icon">category_icon</string>
     <string name="search_text">Search</string>
